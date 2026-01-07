@@ -18,8 +18,11 @@ VOICES = [
     "vitaliy-ng", "vsevolod", "yuriy"
 ]
 
-# Параметры rate, pitch, volume (от 20 до 90 с шагом 5)
-RATE_PITCH_VOLUME_RANGE = range(90, 110, 10)  # 20, 25, 30, ..., 90
+# Параметры rate и pitch (от 30 до 80 с шагом 5)
+RATE_PITCH_RANGE = range(30, 85, 5)  # 30, 35, 40, ..., 80
+
+# Параметр volume (от 20 до 100 с шагом 5)
+VOLUME_RANGE = range(20, 105, 5)  # 20, 25, 30, ..., 100
 
 # Каталог сохранения
 OUTPUT_DIR = r"D:\Linux\microWakeWord-Trainer\generated_samples"
@@ -74,9 +77,9 @@ def generate_all_samples(text=TEXT, voices=VOICES, output_dir=OUTPUT_DIR):
     
     for idx, voice in enumerate(voices, 1):
         print(f"🎤 Голос {idx} / {len(voices)}: {voice}")
-        for rate in RATE_PITCH_VOLUME_RANGE:
-            for pitch in RATE_PITCH_VOLUME_RANGE:
-                for volume in RATE_PITCH_VOLUME_RANGE:
+        for rate in RATE_PITCH_RANGE:
+            for pitch in RATE_PITCH_RANGE:
+                for volume in VOLUME_RANGE:
                     filename = f"{voice}_rate{rate}_pitch{pitch}_volume{volume}.{FORMAT}"
                     filepath = os.path.join(output_dir, filename)
                     
